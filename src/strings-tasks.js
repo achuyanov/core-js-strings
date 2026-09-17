@@ -130,8 +130,8 @@ function removeTrailingWhitespaces(st) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(st, times) {
+  return times >= 0 ? st.repeat(times) : '';
 }
 
 /**
@@ -146,8 +146,9 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(st, value) {
+  const idx = st.indexOf(value);
+  return idx >= 0 ? st.slice(0, idx) + st.slice(idx + value.length) : st;
 }
 
 /**
@@ -162,8 +163,9 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(st, value) {
+  const idx = st.lastIndexOf(value);
+  return idx >= 0 ? st.slice(0, idx) + st.slice(idx + value.length) : st;
 }
 
 /**
@@ -178,8 +180,13 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(st) {
+  return !st
+    ? 0
+    : st
+        .split('')
+        .map((ch) => ch.charCodeAt(0))
+        .reduce((acc, cur) => acc + cur, 0);
 }
 
 /**
@@ -193,8 +200,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(st, subst) {
+  return st.startsWith(subst);
 }
 
 /**
@@ -208,8 +215,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(st, subst) {
+  return st.endsWith(subst);
 }
 
 /**
@@ -225,8 +232,9 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(min, sec) {
+  const fn = (v) => String(v).padStart(2, '0');
+  return `${fn(min)}:${fn(sec)}`;
 }
 
 /**
